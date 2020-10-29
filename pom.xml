@@ -50,6 +50,10 @@
 			<scope>19.6.0.0</scope>
 		</dependency>
 		<dependency>
+    		<groupId>com.oracle.database.ha</groupId>
+    		<artifactId>ons</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
