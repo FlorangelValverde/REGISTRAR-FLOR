@@ -58,8 +58,10 @@ public class Estado_CivilDaoImp implements Estado_CivilDao{
 	@Override
 	public Map<String, Object> readAll() {
 		// TODO Auto-generated method stub
-		
-		return null;
+		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withCatalogName("PKG_ESTADO_CIVIL")
+														 .withProcedureName("PR_LIS_ESTADO_CIVIL")
+														 .declareParameters(new SqlOutParameter("CUR_ESTADO_CIVIL", OracleTypes.CURSOR,
+														  new ColumnMapRowMapper()));
+		return simpleJdbcCall.execute();
 	}
-	
 }

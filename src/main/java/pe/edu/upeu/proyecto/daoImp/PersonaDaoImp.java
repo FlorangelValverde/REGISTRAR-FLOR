@@ -1,12 +1,19 @@
 package pe.edu.upeu.proyecto.daoImp;
 
+import java.sql.Types;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.ColumnMapRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SqlOutParameter;
+import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Component;
 
+import oracle.jdbc.OracleTypes;
 import pe.edu.upeu.proyecto.dao.PersonaDao;
 import pe.edu.upeu.proyecto.entity.Persona;
 
@@ -42,13 +49,20 @@ public class PersonaDaoImp implements PersonaDao {
 	@Override
 	public Map<String, Object> read(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		System.out.println(id);
+		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withCatalogName("PKG_PERSONA").withProcedureName("PR_READ_PERSONA")
+														 .declareParameters(new SqlOutParameter("CUR_PERSONA", OracleTypes.CURSOR,
+														  new ColumnMapRowMapper()), new SqlParameter("IDPERSONA", Types.INTEGER));
+		SqlParameterSource in = new MapSqlParameterSource().addValue("IDESTADO_CIVIL", id);
+		return simpleJdbcCall.execute(in);
 	}
 
 	@Override
 	public Map<String, Object> readAll() {
 		// TODO Auto-generated method stub
-		return null;
+		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withCatalogName("PKG_PERSONA").withProcedureName("PR_LIS_PERSONA")
+														 .declareParameters(new SqlOutParameter("CUR_PERSONA", OracleTypes.CURSOR,
+														  new ColumnMapRowMapper()));
+		return simpleJdbcCall.execute();
 	}
-
 }
