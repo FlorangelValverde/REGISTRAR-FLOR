@@ -1,3 +1,4 @@
+/*Creado por Diego Alor Chavarria*/
 package pe.edu.upeu.proyecto.entity;
 
 public class Estado_Civil {

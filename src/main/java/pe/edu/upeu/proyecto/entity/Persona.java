@@ -1,3 +1,4 @@
+/*Creado por Diego Alor Chavarria*/
 package pe.edu.upeu.proyecto.entity;
 
 import java.util.Date;

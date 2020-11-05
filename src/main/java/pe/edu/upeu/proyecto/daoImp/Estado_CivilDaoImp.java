@@ -1,4 +1,5 @@
- package pe.edu.upeu.proyecto.daoImp;
+/*Creado por Diego Alor Chavarria*/
+package pe.edu.upeu.proyecto.daoImp;
 
 import java.sql.Types;
 import java.util.Map;
@@ -18,7 +19,7 @@ import oracle.jdbc.OracleTypes;
 import pe.edu.upeu.proyecto.dao.Estado_CivilDao;
 import pe.edu.upeu.proyecto.entity.Estado_Civil;
 
-@Component 
+@Repository
 public class Estado_CivilDaoImp implements Estado_CivilDao{
 
 	@Autowired
@@ -48,7 +49,7 @@ public class Estado_CivilDaoImp implements Estado_CivilDao{
 		// TODO Auto-generated method stub
 		System.out.println(id);
 		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withCatalogName("PKG_ESTADO_CIVIL")
-														 .withProcedureName("PR_READ_ESTADO_CIVIL")
+														 .withProcedureName("PR_BUS_ESTADO_CIVIL")
 														 .declareParameters(new SqlOutParameter("CUR_ESTADO_CIVIL", OracleTypes.CURSOR,
 														  new ColumnMapRowMapper()), new SqlParameter("IDESTADO_CIVIL", Types.INTEGER));
 		SqlParameterSource in = new MapSqlParameterSource().addValue("IDESTADO_CIVIL", id);

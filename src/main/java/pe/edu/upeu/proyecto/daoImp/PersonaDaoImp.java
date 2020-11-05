@@ -1,3 +1,4 @@
+/*Creado por Diego Alor Chavarria*/
 package pe.edu.upeu.proyecto.daoImp;
 
 import java.sql.Types;
@@ -12,12 +13,13 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import oracle.jdbc.OracleTypes;
 import pe.edu.upeu.proyecto.dao.PersonaDao;
 import pe.edu.upeu.proyecto.entity.Persona;
 
-@Component
+@Repository
 public class PersonaDaoImp implements PersonaDao {
 
 	@Autowired
@@ -50,10 +52,10 @@ public class PersonaDaoImp implements PersonaDao {
 	public Map<String, Object> read(int id) {
 		// TODO Auto-generated method stub
 		System.out.println(id);
-		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withCatalogName("PKG_PERSONA").withProcedureName("PR_READ_PERSONA")
+		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).withCatalogName("PKG_PERSONA").withProcedureName("PR_BUS_PERSONA")
 														 .declareParameters(new SqlOutParameter("CUR_PERSONA", OracleTypes.CURSOR,
 														  new ColumnMapRowMapper()), new SqlParameter("IDPERSONA", Types.INTEGER));
-		SqlParameterSource in = new MapSqlParameterSource().addValue("IDESTADO_CIVIL", id);
+		SqlParameterSource in = new MapSqlParameterSource().addValue("IDPERSONA", id);
 		return simpleJdbcCall.execute(in);
 	}
 
