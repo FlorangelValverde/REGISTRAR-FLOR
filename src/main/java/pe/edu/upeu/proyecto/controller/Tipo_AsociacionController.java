@@ -25,9 +25,9 @@ public class Tipo_AsociacionController {
 	private Tipo_AsociacionService tipo_asociacionService;
 	
 	@GetMapping("/all")
-	/*public Map<String, Object> realAll() {
-		return personaService.readAll();
-	}*/
+	public Map<String, Object> realAll() {
+		return tipo_asociacionService.readAll();
+	}
 	public Map<String, Object> get(){
 		return tipo_asociacionService.readAll();
 	}
