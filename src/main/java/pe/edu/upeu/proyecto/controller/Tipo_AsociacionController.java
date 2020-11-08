@@ -1,4 +1,3 @@
-/*Creado por Diego Alor Chavarria*/
 package pe.edu.upeu.proyecto.controller;
 
 import java.util.Map;
@@ -14,46 +13,48 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import pe.edu.upeu.proyecto.entity.Persona;
-import pe.edu.upeu.proyecto.service.PersonaService;
+import pe.edu.upeu.proyecto.entity.Tipo_Asociacion;
+import pe.edu.upeu.proyecto.service.Tipo_AsociacionService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/persona")
-public class PersonaController {
-	
+@RequestMapping("/tipoasociaciones")
+public class Tipo_AsociacionController {
+
 	@Autowired
-	private PersonaService personaService;
+	private Tipo_AsociacionService tipo_asociacionService;
 	
 	@GetMapping("/all")
 	/*public Map<String, Object> realAll() {
 		return personaService.readAll();
 	}*/
 	public Map<String, Object> get(){
-		return personaService.readAll();
+		return tipo_asociacionService.readAll();
 	}
 	
 	@GetMapping("/{id}")
 	public Map<String, Object> read(@PathVariable int id) {
-		return personaService.read(id);
+		return tipo_asociacionService.read(id);
 	}
 	@PostMapping("/add")
 	//este metodo permite registrar una competencia
-	public int create(@RequestBody Persona c) {
-		return personaService.create(c);		
+	public int create(@RequestBody Tipo_Asociacion c) {
+		return tipo_asociacionService.create(c);		
 	}
 	@DeleteMapping("/delete/{id}")
 	//este metodo permite eliminar una competencia
 	public int delete(@PathVariable int id) {
-		return personaService.delete(id);
+		return tipo_asociacionService.delete(id);
 	}	
 	
 	@PutMapping("/edit/{id}")
 	//este metodo permite modificar una competencia
-    public int update(@RequestBody Persona c,@PathVariable int id) {
-		c.setIdpersona(id);
+    public int update(@RequestBody Tipo_Asociacion c,@PathVariable int id) {
+		c.setIdtipo_asociacion(id);
 		
-	return personaService.update(c);
+	return tipo_asociacionService.update(c);
 	}	
 	
 }
+
+
