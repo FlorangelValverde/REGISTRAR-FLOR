@@ -1,4 +1,4 @@
-package pe.edu.upeu.proyecto.controller;
+ package pe.edu.upeu.proyecto.controller;
 
 import java.util.Map;
 
@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import pe.edu.upeu.proyecto.entity.Tipo_Asociacion;
 import pe.edu.upeu.proyecto.service.Tipo_AsociacionService;
-
-@CrossOrigin(origins = "*")
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders= "*")
 @RequestMapping("/tipoasociaciones")
 public class Tipo_AsociacionController {
 
@@ -25,6 +24,7 @@ public class Tipo_AsociacionController {
 	private Tipo_AsociacionService tipo_asociacionService;
 	
 	@GetMapping("/all")
+	@CrossOrigin(origins = "http://localhost:4200")
 	public Map<String, Object> realAll() {
 		return tipo_asociacionService.readAll();
 	}
@@ -48,7 +48,7 @@ public class Tipo_AsociacionController {
 	}	
 	
 	@PutMapping("/edit/{id}")
-	//este metodo permite modificar una competencia
+	//este metodo permite modifi/edit/{id}car una competencia
     public int update(@RequestBody Tipo_Asociacion c,@PathVariable int id) {
 		c.setIdtipo_asociacion(id);
 		

@@ -22,7 +22,7 @@ import pe.edu.upeu.proyecto.entity.Tipo_Asociacion;
 public class Tipo_AsociacionDaoImpl implements Tipo_AsociacionDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	private SimpleJdbcCall simpleJdbcCall;
+	private SimpleJdbcCall simpleJdbcCall; 
 		@Override
 		public int create(Tipo_Asociacion d) {
 			// TODO Auto-generated method stub
@@ -48,8 +48,8 @@ public class Tipo_AsociacionDaoImpl implements Tipo_AsociacionDao {
 			simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate)
 					.withCatalogName("PKG_TIPO_ASOCIACION")
 					.withProcedureName("PR_BUS_TIPO_ASOCIACION")
-					.declareParameters(new SqlOutParameter("CUR_TIPO_ASOCIACION", OracleTypes.CURSOR, new ColumnMapRowMapper()), new SqlParameter("IDTIPO_ASOCIACION", Types.INTEGER));
-					SqlParameterSource in = new MapSqlParameterSource().addValue("IDTIPO_ASOCIACION", id);
+					.declareParameters(new SqlOutParameter("CUR_TIPO_ASOCIACION", OracleTypes.CURSOR, new ColumnMapRowMapper()), new SqlParameter("ID", Types.INTEGER));
+					SqlParameterSource in = new MapSqlParameterSource().addValue("ID", id);
 					return simpleJdbcCall.execute(in);
 		}
 
