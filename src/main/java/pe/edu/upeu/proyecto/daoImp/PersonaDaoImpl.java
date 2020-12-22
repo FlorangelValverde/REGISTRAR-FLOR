@@ -1,6 +1,8 @@
 package pe.edu.upeu.proyecto.daoImp;
 
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +26,19 @@ private SimpleJdbcCall simpleJdbcCall;
 	@Override
 	public int create(Persona p) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.update("call PK_PERSONA.sp_ins_persona(?,?,?,?,?,?,?,?,?,?)",p.getApe_mat(), p.getApe_pat(), p.getNombre(), p.getDni(), p.getCorreo(),p.getTelefono(),p.getF_nac(),p.getEstado(),p.getUbicacion());
+		return jdbcTemplate.update("call PKG_PERSONA.INS(?,?,?,?,?,?,?,?,?,?)",p.getApe_mat(), p.getApe_pat(), p.getNombre(), p.getDni(), p.getCorreo(),p.getTelefono(),p.getF_nac(),p.getEstado(),p.getUbicacion());
 	}
 
 	@Override
 	public int update(Persona p) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.update("call PK_PERSONA.sp_upd_persona(?,?,?,?,?,?,?,?,?,?,?)", p.getApe_mat(), p.getApe_pat(), p.getNombre(), p.getDni(), p.getCorreo(),p.getTelefono(),p.getF_nac(),p.getEstado(),p.getUbicacion(),p.getId_pers());
+		return jdbcTemplate.update("call PKG_PERSONA.UPD(?,?,?,?,?,?,?,?,?,?,?)", p.getApe_mat(), p.getApe_pat(), p.getNombre(), p.getDni(), p.getCorreo(),p.getTelefono(),p.getF_nac(),p.getEstado(),p.getUbicacion(),p.getId_pers());
 	}
 
 	@Override
 	public int delete(int id) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.update("call PK_PERSONA.sp_delete_persona(?)", id);
+		return jdbcTemplate.update("call PKG_PERSONA.DEL(?)", id);
 	}
 
 	@Override
@@ -44,7 +46,7 @@ private SimpleJdbcCall simpleJdbcCall;
 		// TODO Auto-generated method stub
 		System.out.println(id);
 		simpleJdbcCall = new SimpleJdbcCall (jdbcTemplate)
-				.withCatalogName("PK_PERSONA")
+				.withCatalogName("PKG_PERSONA")
 				.withProcedureName("sp_read_persona")
 				.declareParameters(new SqlOutParameter("cursor_persona", OracleTypes.CURSOR, new ColumnMapRowMapper()), new SqlOutParameter("ID_PERS", Types.INTEGER));
 				SqlParameterSource in = new MapSqlParameterSource().addValue("ID_PERS", id);
@@ -52,13 +54,16 @@ private SimpleJdbcCall simpleJdbcCall;
 	}
 
 	@Override
-	public Map<String, Object> readAll() {
+	public List <Map<String, Object>> readAll() {
 		// TODO Auto-generated method stub
-		simpleJdbcCall = new SimpleJdbcCall (jdbcTemplate)
-				.withCatalogName("PK_PERSONA")
+		List <Map<String, Object>> flor = new ArrayList<>();
+		simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate)
+				.withCatalogName("PKG_PERSONA")
 				.withProcedureName("sp_listar_persona")
 				.declareParameters(new SqlOutParameter ("cursor_persona", OracleTypes.CURSOR, new ColumnMapRowMapper()));
-		return simpleJdbcCall.execute();
+		Map<String, Object> lista =  simpleJdbcCall.execute();
+		flor.add(lista);
+		return  flor;
 	}
 
 }

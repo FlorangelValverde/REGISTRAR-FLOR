@@ -1,5 +1,6 @@
 package pe.edu.upeu.proyecto.serviceImp;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ private PersonaDao personaDao;
 	}
 
 	@Override
-	public Map<String, Object> readAll() {
+	public List<Map<String, Object>> readAll() {
 		// TODO Auto-generated method stub
 		return personaDao.readAll();
 	}

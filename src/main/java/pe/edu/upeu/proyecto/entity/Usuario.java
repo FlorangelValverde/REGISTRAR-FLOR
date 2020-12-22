@@ -5,17 +5,25 @@ public class Usuario {
 	private String password;
 	private String estado;
 	private String username;
+	private int id_per;
 	public Usuario() {
 		super();
 	}
-	public Usuario(int id_usua, String password, String estado, String username) {
+	public Usuario(int id_usua, String password, String estado, String username, int id_per) {
 		super();
 		this.id_usua = id_usua;
 		this.password = password;
 		this.estado = estado;
 		this.username = username;
+		this.id_usua = id_per;
 	}
 	
+	public int getId_per() {
+		return id_per;
+	}
+	public void setId_per(int id_per) {
+		this.id_per = id_per;
+	}
 	public int getId_usua() {
 		return id_usua;
 	}
