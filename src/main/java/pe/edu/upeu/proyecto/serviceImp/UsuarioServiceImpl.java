@@ -1,6 +1,9 @@
 package pe.edu.upeu.proyecto.serviceImp;
 
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +21,12 @@ public int create(Persona persona, Usuario usuario) {
 	// TODO Auto-generated method stub
 	return usuarioDao.create(persona, usuario);
 }
+
+@Override
+public List<Map<String, Object>> listar() {
+	// TODO Auto-generated method stub
+	return usuarioDao.listar();
+}
+
 	
 }
