@@ -42,6 +42,12 @@ public List<Map<String, Object>> listar() {
             userlist.add(map);
     return userlist;
 }
+@Override
+public int delete(int id_usua) {
+	// TODO Auto-generated method stub
+	return jdbcTemplate.update("call PKG_USUARIO.DEL_USUAPER(?)", id_usua)
+			;
+}
 	
 
 }

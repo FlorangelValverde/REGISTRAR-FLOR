@@ -10,4 +10,5 @@ import pe.edu.upeu.proyecto.entity.Usuario;
 public interface UsuarioService {
 	int create (Persona persona, Usuario usuario);
 	List<Map<String, Object>> listar();
+	int delete (int id_usua);
 }

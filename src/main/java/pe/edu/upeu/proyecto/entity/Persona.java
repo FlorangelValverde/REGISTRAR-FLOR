@@ -1,6 +1,12 @@
 package pe.edu.upeu.proyecto.entity;
 
 public class Persona {
+	@Override
+	public String toString() {
+		return "Persona [id_pers=" + id_pers + ", nombre=" + nombre + ", ape_pat=" + ape_pat + ", ape_mat=" + ape_mat
+				+ ", dni=" + dni + ", correo=" + correo + ", telefono=" + telefono + ", f_nac=" + f_nac + ", estado="
+				+ estado + ", ubicacion=" + ubicacion + "]";
+	}
 	private int id_pers;
 	private String nombre;
 	private String ape_pat;

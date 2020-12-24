@@ -32,7 +32,7 @@ private SimpleJdbcCall simpleJdbcCall;
 	@Override
 	public int update(Persona p) {
 		// TODO Auto-generated method stub
-		return jdbcTemplate.update("call PKG_PERSONA.UPD(?,?,?,?,?,?,?,?,?,?,?)", p.getApe_mat(), p.getApe_pat(), p.getNombre(), p.getDni(), p.getCorreo(),p.getTelefono(),p.getF_nac(),p.getEstado(),p.getUbicacion(),p.getId_pers());
+		return jdbcTemplate.update("call PKG_PERSONA.UPD(?,?,?,?,?,?,?,?,?)",p.getId_pers(), p.getNombre(), p.getApe_pat(), p.getApe_mat(),p.getDni(),p.getCorreo(),p.getTelefono(),p.getF_nac(),p.getUbicacion());
 	}
 
 	@Override

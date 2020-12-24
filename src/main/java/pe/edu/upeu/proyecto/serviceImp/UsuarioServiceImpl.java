@@ -28,5 +28,11 @@ public List<Map<String, Object>> listar() {
 	return usuarioDao.listar();
 }
 
+@Override
+public int delete(int id_usua) {
+	// TODO Auto-generated method stub
+	return usuarioDao.delete(id_usua);
+}
+
 	
 }

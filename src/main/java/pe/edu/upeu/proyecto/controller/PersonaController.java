@@ -48,16 +48,10 @@ public class PersonaController {
 	public int delete(@PathVariable int id) {
 		return personaService.delete(id);
 	}
-	@PutMapping("/edit/{id}")
-	public int update(@RequestBody Persona c, @PathVariable int id) {
-		System.out.println(c.getNombre());
-		System.out.println(c.getApe_pat());
-		System.out.println(c.getApe_mat());
-		Persona persona = new Persona();
-		persona.setId_pers(id);;
-		persona.setNombre(c.getNombre());
-		persona.setApe_pat(c.getApe_pat());
-		persona.setApe_mat(c.getApe_mat());
+	@PutMapping("/editar/")
+	public int update(@RequestBody Persona c) {
+		
+		System.out.println(c.toString());
 		return personaService.update(c);
 	}
 
